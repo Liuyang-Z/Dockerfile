@@ -27,11 +27,11 @@ NGINX 主配置文件为 `usr/local/nginx/conf/nginx.conf`
 
 _Docker Pull Command_
 
-`$ docker pull yangzl/docker-webserver`
+`$ docker pull yangzl/webserver`
 
 _Docker Run Command_
 
-`$ docker run -ti --name webserver -v /data:/data -p 80:80 -p 443:443 docker-webserver:latest`
+`$ docker run -ti --name webserver -v /data:/data -p 80:80 -p 443:443 webserver:latest`
 
 ## NOTICE
 - 启动容器前必须确保文件结构完整，尤其是 nginx-conf 文件夹内的配置文件必须正确，否则无法正常启动。
