@@ -6,8 +6,8 @@ custom docker base image
 
 _Docker Pull Command_
 
-`docker pull yangzl/docker-base`
+`docker pull yangzl/base-image`
 
 _Docker Run Command_
 
-`docker run -ti --name app -v /data:/data docker-base:latest`
+`docker run -ti --name app -v /data:/data base-image:latest`
