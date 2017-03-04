@@ -13,7 +13,7 @@ RUN buildDeps='python3-dev python3-pip'; \
         && mkdir -p /data/jupyternb
 
 COPY jupyter_notebook_config.py /root/.jupyter/jupyter_notebook_config.py
-COPY scripts /data/
+COPY Scripts /data/
 RUN set -x \
         && sed -Ei '2a jupyter notebook >> /var/log/jupyter.log 2>&1' /autoRun.sh
 ENTRYPOINT ["/autoRun.sh"]
