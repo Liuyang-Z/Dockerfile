@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 apt-get update
-apt-get -y install libxml2-dev libssl-dev libcurl4-openssl-dev r-base libzmq3-dev
+apt-get -y install libxml2-dev libssl-dev libcurl4-openssl-dev r-base libzmq3-dev wget git
 
 echo ":: Now, installing R package."
 
