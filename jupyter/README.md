@@ -1,11 +1,35 @@
 # Jupyter
 
-Jupyter in docker.
+Jupyter Notebook(JN) in docker. Default kernel is python3.
 
-## How tho run?
+## 运行 Docker
 
+_Docker Run Command_
 ```
 docker run -d -v /notebook:/data/jupyternb -p 8888:8888 --name jupyter yangzl/jupyter:latest
 ```
 
-The default password is `hello`
+* `-v /notebook:/data/jupyternb` 其中 `:` 的前半部分为主机要与容器共享的文件夹，用户可以自定义，起后半部分为容器内文件夹，不可以改变。
+* `-p 8888:8888` 为主机端口到容器端口的映射。
+
+默认密码为： `hello`
+
+## 安装其它 JN 内核
+由于有些内核的安装会占用较大的存储空间，如果默认内置常用的内核会使得容器体积过大。但是，我已经将一些常用的 JN 内核的安装脚本内置到了容器中，如果您需要可以通过简单的命令进行安装。
+
+已经包含的安装脚本如下：
+* c
+* python2
+* R
+
+如果您需要安装其它的内核，在这 [Jupyter-kernels][1] 可以查看其支持的所有内核。
+
+**安装步骤**
+- 在 JN 中新建 Terminal
+- 进入 `/data/Scripts/`
+- `$ bash xx.sh` 可以安装 xx 内核。
+
+## FAQ
+如果使用过程中有任何问题或出现致命错误，请尽可能详细的截图并 email( zlyang65#gmail.com )，非常感谢。
+
+[1]: https://github.com/jupyter/jupyter/wiki/Jupyter-kernels
