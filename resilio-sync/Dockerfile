@@ -1,19 +1,15 @@
 FROM yangzl/base-image:latest
 MAINTAINER Liuyang-Z "zlyang65@gmail.com"
 
+ADD https://download-cdn.resilio.com/2.4.4/linux-x64/resilio-sync_x64.tar.gz /tmp/sync.tgz
 RUN set -x \
-    && apt-get update \
-    && apt-get install -y wget \
-    && echo "deb http://linux-packages.resilio.com/resilio-sync/deb resilio-sync non-free" >> /etc/apt/sources.list \
-    && wget -qO - https://linux-packages.resilio.com/resilio-sync/key.asc | apt-key add - \
-    && apt-get update \
-    && apt-get install -y resilio-sync \
-    && mkdir -p /data/sync \
-    && chown -R rslsync:rslsync /data
+        && tar -xf /tmp/sync.tgz -C /usr/bin rslsync \
+        && rm -f /tmp/sync.tgz \
+        && mkdir -p /data/sync /data/config
 
-COPY config.json /etc/resilio-sync/config.json
+COPY sync.conf /etc/sync.conf
 RUN set -x \
-        && sed -Ei '2a /etc/init.d/resilio-sync start' /autoRun.sh
+        && sed -Ei '2a /usr/bin/rslsync --nodaemon --config /etc/sync.conf' /autoRun.sh
 ENTRYPOINT ["/autoRun.sh"]
 
 CMD ["/bin/bash"]
