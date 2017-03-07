@@ -7,7 +7,7 @@ if ! [ -f /data/resilio/config/sync.conf ]; then
     cp /etc/sync.conf.default /data/resilio/config/sync.conf
 fi
 
-/usr/bin/rslsync --nodaemon --config /data/resilio/config/sync.conf
+/usr/bin/rslsync --nodaemon --config /data/resilio/config/sync.conf >> /var/log/rslsync.log 2>&1
 
 /bin/bash
 
