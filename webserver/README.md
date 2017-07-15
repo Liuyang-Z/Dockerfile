@@ -38,6 +38,20 @@ _Docker Run Command_
 
 `$ docker run -ti --name webserver -v /data:/data -p 80:80 -p 443:443 webserver:latest`
 
+## PHP 打开 zend 缓存
+
+将下面代码段拷贝至 `/data/php/php.ini` 中，重启容器即可。
+
+```bash
+zend_extension=opcache.so
+opcache.memory_consumption=128
+opcache.interned_strings_buffer=8
+opcache.max_accelerated_files=4000
+opcache.revalidate_freq=60
+opcache.fast_shutdown=1
+opcache.enable_cli=1
+```
+
 ## 补充
 
 * NGINX 编译选项如下：
