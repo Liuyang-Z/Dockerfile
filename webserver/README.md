@@ -1,9 +1,8 @@
 # Docker-webserver
 
-容器内应用位置：
+![Nginx](https://img.shields.io/badge/Nginx-1.12.1-yellow.svg)
+![PHP](https://img.shields.io/badge/PHP-7.1.7-red.svg)
 
-- /usr/local/nginx [1.10.3]
-- /usr/local/php   [7.1.1]
 
 NGINX 主配置文件为 `usr/local/nginx/conf/nginx.conf`
 
@@ -16,12 +15,16 @@ NGINX 主配置文件为 `usr/local/nginx/conf/nginx.conf`
 |-- html
 |   `-- index.html
 |-- nginx-conf
-|   `-- default.conf
+|   `-- *.conf
+|   `-- php.ini *
+|   `-- nginx *
 `-- nginx-ssl
     |-- dhparam.pem
     |-- fullchain.pem
     `-- privkey.pem
 ```
+
+注意，其中 * 号标注的文件再启动容器后会自动生成。如果你已经有配置好的 `nginx` 和 `php.ini` 文件则可以拷贝至 `nginx-conf` 文件夹下，启动容器时会自动应用你的配置文件到程序。
 
 ## How to use?
 
@@ -36,4 +39,4 @@ _Docker Run Command_
 ## NOTICE
 - 启动容器前必须确保文件结构完整，尤其是 nginx-conf 文件夹内的配置文件必须正确，否则无法正常启动。
 - 容器启动后，容器内应用(NGINX PHP)自动启动。
-- `/data/` 作为容器与主机的共享卷，其中凡容器内使用的文件（如配置文件、SSL证书文件）都不能使用 `ln -s` 软连接指向。
+- `/data/` 作为容器与主机的共享卷，其中凡容器内使用的文件（如配置文件、SSL证书文件）都不能使用 `ln -s` 软链接。
