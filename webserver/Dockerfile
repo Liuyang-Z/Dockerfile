@@ -23,7 +23,7 @@ RUN buildDeps='libpcre3 libpcre3-dev zlib1g-dev libssl-dev libbz2-dev libcurl4-o
         && cd /data/softwares/php-7.1.7 \
         && ./configure --prefix=/usr/local/php --with-config-file-path=/usr/local/php/etc --enable-fpm --enable-mysqlnd \
                         --with-mysqli=mysqlnd --with-pdo-mysql=mysqlnd --with-iconv-dir --with-freetype-dir --with-jpeg-dir \
-                        --with-png-dir --with-zlib --with-curl --with-gd --with-xmlrpc --with-openssl=../openssl --with-mhash \
+                        --with-png-dir --with-zlib --with-curl --with-gd --with-xmlrpc --with-openssl --with-mhash \
                         --with-curlwrappers --with-libxml-dir --with-pear --with-bz2 --enable-gd-native-ttf --enable-safe-mode \
                         --enable-bcmath --enable-shmop --enable-sysvsem --enable-sysvshm --enable-sysvmsg --enable-mbstring \
                         --enable-sockets --enable-magic-quotes --enable-zip --enable-soap --enable-dba --enable-exif \

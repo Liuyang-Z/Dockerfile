@@ -73,7 +73,7 @@ _Docker Run Command_
 > --with-curl \
 > --with-gd \
 > --with-xmlrpc \
-> --with-openssl=../openssl \
+> --with-openssl \
 > --with-mhash \
 > --with-curlwrappers \
 > --with-libxml-dir \
