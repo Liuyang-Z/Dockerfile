@@ -59,6 +59,7 @@ opcache.enable_cli=1
 ```bash
 # cd nginx-1.12.1
 # ./configure \
+> --with-stream \
 > --with-http_v2_module \
 > --with-http_ssl_module \
 > --with-http_gzip_static_module \

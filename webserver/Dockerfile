@@ -16,7 +16,7 @@ RUN buildDeps='libpcre3 libpcre3-dev zlib1g-dev libssl-dev libbz2-dev libcurl4-o
         && unzip master.zip && mv ngx_http_substitutions_filter_module-master ngx_http_substitutions_filter_module && rm -rf master.zip \
         && wget http://php.net/distributions/php-7.1.7.tar.gz && tar -xvf php-7.1.7.tar.gz \
         && cd nginx-1.12.1 \
-        && ./configure --with-http_v2_module --with-http_ssl_module --with-http_gzip_static_module \
+        && ./configure --with-stream --with-http_v2_module --with-http_ssl_module --with-http_gzip_static_module \
                         --with-openssl=../openssl --add-module=../ngx_http_substitutions_filter_module --add-module=../nginx-ct \
         && make && make install \
         && ln -s /usr/lib/x86_64-linux-gnu/libssl.so /usr/lib \
