@@ -51,7 +51,11 @@ opcache.revalidate_freq=60
 opcache.fast_shutdown=1
 opcache.enable_cli=1
 ```
+
 ## 补充一
+
+> * TLS1.3-draft--18 分支**不支持** Nginx-CT
+> * TLS1.3-draft--19 分支**支持** Nginx-CT，但 Chrome 62.0 **不支持** TLS1.3-draft--19 分支
 
 配置 TLS 1.3 之后需要对 `nginx.conf` 进行相应的修改：
 
