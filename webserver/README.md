@@ -2,7 +2,7 @@
 
 ![Nginx](https://img.shields.io/badge/Nginx-1.13.7-yellow.svg)
 ![PHP](https://img.shields.io/badge/PHP-7.1.12-red.svg)
-![OpenSSL](https://img.shields.io/badge/TLS1.3-draft--19-green.svg)
+![OpenSSL](https://img.shields.io/badge/TLS1.3-draft--18-green.svg)
 
 
 NGINX 主配置文件为 `usr/local/nginx/conf/nginx.conf`
