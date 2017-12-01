@@ -11,7 +11,7 @@ RUN buildDeps='libpcre3 libpcre3-dev zlib1g-dev libssl-dev libbz2-dev libcurl4-o
         # 下载 NGINX 源码
         && wget http://nginx.org/download/nginx-1.12.2.tar.gz && tar -xvf nginx-1.12.2.tar.gz \
         # OpenSSL 库
-        && git clone -b tls1.3-draft-18 --single-branch https://github.com/openssl/openssl.git openssl \
+        && git clone -b tls1.3-draft-19 --single-branch https://github.com/openssl/openssl.git openssl \
         # nginx-ct 模块
         && wget https://github.com/grahamedgecombe/nginx-ct/archive/master.zip && unzip master.zip && mv nginx-ct-master nginx-ct \
         && rm -rf master.zip \
@@ -29,18 +29,18 @@ RUN buildDeps='libpcre3 libpcre3-dev zlib1g-dev libssl-dev libbz2-dev libcurl4-o
         && cd nginx-1.12.2 \
         && ./configure --add-module=../ngx_brotli --with-openssl=../openssl --add-module=../ngx_http_substitutions_filter_module --add-module=../nginx-ct \
                        --with-openssl-opt='enable-tls1_3 enable-weak-ssl-ciphers' \
-                       --with-stream --with-http_v2_module --with-http_ssl_module --with-http_gzip_static_module\
+                       --with-stream --with-http_v2_module --with-http_ssl_module --with-http_gzip_static_module \
         && make && make install \
         && ln -s /usr/lib/x86_64-linux-gnu/libssl.so /usr/lib \
         # 编译安装 PHP
         && cd /data/softwares/php-7.1.12 \
         && ./configure --prefix=/usr/local/php --with-config-file-path=/usr/local/php/etc --enable-fpm --enable-mysqlnd \
-                        --with-mysqli=mysqlnd --with-pdo-mysql=mysqlnd --with-iconv-dir --with-freetype-dir --with-jpeg-dir \
-                        --with-png-dir --with-zlib --with-curl --with-gd --with-xmlrpc --with-openssl --with-mhash \
-                         --with-libxml-dir --with-pear --with-bz2 --with-libzip \
-                        --enable-bcmath --enable-shmop --enable-sysvsem --enable-sysvshm --enable-sysvmsg --enable-mbstring \
-                        --enable-sockets --enable-zip --enable-soap --enable-dba --enable-exif \
-                        --enable-ftp --enable-opcache \
+                       --with-mysqli=mysqlnd --with-pdo-mysql=mysqlnd --with-iconv-dir --with-freetype-dir --with-jpeg-dir \
+                       --with-png-dir --with-zlib --with-curl --with-gd --with-xmlrpc --with-openssl --with-mhash \
+                       --with-libxml-dir --with-pear --with-bz2 --with-libzip \
+                       --enable-bcmath --enable-shmop --enable-sysvsem --enable-sysvshm --enable-sysvmsg --enable-mbstring \
+                       --enable-sockets --enable-zip --enable-soap --enable-dba --enable-exif \
+                       --enable-ftp --enable-opcache \
         && make && make install \
         && cp /data/softwares/php-7.1.12/php.ini-production /usr/local/php/etc/php.ini \
         && cd /usr/local/php/etc && mv php-fpm.conf.default php-fpm.conf \
