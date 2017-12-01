@@ -1,7 +1,7 @@
 # PHP in Docker
 
 ```
-$ docker run -ti -v /[website]:/data/php --name php-server yangzl/php:16.04
+$ docker run -ti -v /[website]:/data/php -p 127.0.0.1:9000:9000 --name php-server yangzl/php:16.04
 ```
 
 * [website]: 存储 PHP 配置文件，或将已有的配置文件复制到目录中以用于 Docker 中
