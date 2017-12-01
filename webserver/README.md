@@ -1,8 +1,8 @@
 # Docker-webserver
 
-![Nginx](https://img.shields.io/badge/Nginx-1.12.1-yellow.svg)
-![PHP](https://img.shields.io/badge/PHP-7.1.7-red.svg)
-![OpenSSL](https://img.shields.io/badge/OpenSSL-1.1.0F-blue.svg)
+![Nginx](https://img.shields.io/badge/Nginx-1.12.2-yellow.svg)
+![PHP](https://img.shields.io/badge/PHP-7.1.12-red.svg)
+![OpenSSL](https://img.shields.io/badge/TLS1.3-draft--18-red.svg)
 
 
 NGINX 主配置文件为 `usr/local/nginx/conf/nginx.conf`
