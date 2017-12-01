@@ -36,7 +36,7 @@ _Docker Pull Command_
 
 _Docker Run Command_
 
-`$ docker run -ti --name webserver -v /data:/data -p 80:80 -p 443:443 webserver:latest`
+`$ docker run -ti --name webserver -v /data:/data -p 80:80 -p 443:443 yangzl/webserver:latest`
 
 ## PHP 打开 zend 缓存
 
@@ -51,21 +51,33 @@ opcache.revalidate_freq=60
 opcache.fast_shutdown=1
 opcache.enable_cli=1
 ```
+## 补充一
 
-## 补充
+配置 TLS 1.3 之后需要对 `nginx.conf` 进行相应的修改：
+
+```
+ssl_protocols              TLSv1 TLSv1.1 TLSv1.2 TLSv1.3; # 增加 TLSv1.3
+ssl_ciphers                TLS13-AES-256-GCM-SHA384:TLS13-CHACHA20-POLY1305-SHA256:TLS13-AES-128-GCM-SHA256:TLS13-AES-128-CCM-8-SHA256:TLS13-AES-128-CCM-SHA256:EECDH+CHACHA20:EECDH+CHACHA20-draft:EECDH+ECDSA+AES128:EECDH+aRSA+AES128:RSA+AES128:EECDH+ECDSA+AES256:EECDH+aRSA+AES256:RSA+AES256:EECDH+ECDSA+3DES:EECDH+aRSA+3DES:RSA+3DES:!MD5;
+```
+
+包含 TLS13 是 TLS 1.3 新增的 Cipher Suite，加在最前面即可；如果你不打算继续支持 IE8，可以去掉包含 3DES 的 Cipher Suite。
+
+## 补充二
 
 * NGINX 编译选项如下：
 
 ```bash
 # cd nginx-1.12.1
-# ./configure \
+#./configure \
+> --add-module=../ngx_brotli \
+> --with-openssl=../openssl \
+> --add-module=../ngx_http_substitutions_filter_module \
+> --add-module=../nginx-ct \
+> --with-openssl-opt='enable-tls1_3 enable-weak-ssl-ciphers' \
 > --with-stream \
 > --with-http_v2_module \
 > --with-http_ssl_module \
-> --with-http_gzip_static_module \
-> --with-openssl=../openssl \
-> --add-module=../ngx_http_substitutions_filter_module \
-> --add-module=../nginx-ct
+> --with-http_gzip_static_module
 # make && make install
 ```
 
@@ -73,7 +85,7 @@ opcache.enable_cli=1
 
 ```bash
 # cd php-7.1.7
-# ./configure \
+> ./configure \
 > --prefix=/usr/local/php \
 > --with-config-file-path=/usr/local/php/etc \
 > --enable-fpm \
@@ -82,7 +94,7 @@ opcache.enable_cli=1
 > --with-pdo-mysql=mysqlnd \
 > --with-iconv-dir \
 > --with-freetype-dir \
-> --with-jpeg-dir\
+> --with-jpeg-dir \
 > --with-png-dir \
 > --with-zlib \
 > --with-curl \
@@ -90,12 +102,10 @@ opcache.enable_cli=1
 > --with-xmlrpc \
 > --with-openssl \
 > --with-mhash \
-> --with-curlwrappers \
 > --with-libxml-dir \
 > --with-pear \
 > --with-bz2 \
-> --enable-gd-native-ttf \
-> --enable-safe-mode \
+> --with-libzip \
 > --enable-bcmath \
 > --enable-shmop \
 > --enable-sysvsem \
@@ -103,7 +113,6 @@ opcache.enable_cli=1
 > --enable-sysvmsg \
 > --enable-mbstring \
 > --enable-sockets \
-> --enable-magic-quotes \
 > --enable-zip \
 > --enable-soap \
 > --enable-dba \
