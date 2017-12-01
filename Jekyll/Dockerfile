@@ -1,5 +1,5 @@
 FROM ubuntu:latest
-MAINTAINER Liuyang-Z "zlyang65@gmail.com"
+MAINTAINER Liuyang-Z "liuyang.z@hooowl.com"
 
 RUN set -x \
         && apt-get -yqq update \

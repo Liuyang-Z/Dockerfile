@@ -1,5 +1,5 @@
 FROM yangzl/base-image:latest
-MAINTAINER YANG-ZL "zlyang65@gmail.com"
+MAINTAINER YANG-ZL "liuyang.z@hooowl.com"
 
 RUN buildDeps='python3-dev python3-pip'; \
     set -x \

@@ -1,5 +1,5 @@
 FROM yangzl/base-image:latest
-MAINTAINER Liuyang-Z "zlyang65@gmail.com"
+MAINTAINER Liuyang-Z "liuyang.z@hooowl.com"
 
 ADD https://download-cdn.resilio.com/2.4.4/linux-x64/resilio-sync_x64.tar.gz /tmp/sync.tgz
 RUN set -x \
