@@ -1,5 +1,5 @@
 FROM ubuntu:16.04
-MAINTAINER Liuyang-Z "liuyang.z@hooowl.com"
+LABEL maintainer="liuyang.z@hooowl.com"
 
 RUN buildDeps='libpcre3 libpcre3-dev zlib1g-dev libssl-dev libbz2-dev libcurl4-openssl-dev libjpeg-dev \
                 libpng12-dev libfreetype6-dev libpspell-dev librecode-dev libxml2-dev libmcrypt-dev libcurl3-dev \

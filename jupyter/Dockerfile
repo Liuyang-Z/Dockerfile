@@ -1,5 +1,5 @@
 FROM yangzl/base-image:16.04
-MAINTAINER YANG-ZL "liuyang.z@hooowl.com"
+LABEL maintainer="liuyang.z@hooowl.com"
 
 RUN buildDeps='python3-dev python3-pip'; \
     set -x \

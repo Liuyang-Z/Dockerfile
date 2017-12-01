@@ -1,5 +1,5 @@
 FROM ubuntu:16.04
-MAINTAINER Liuyang-Z "liuyang.z@hooowl.com"
+LABEL maintainer="liuyang.z@hooowl.com"
 
 RUN set -x \
         && apt-get -yqq update \
