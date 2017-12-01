@@ -36,7 +36,7 @@ _Docker Pull Command_
 
 _Docker Run Command_
 
-`$ docker run -ti --name webserver -v /data:/data -p 80:80 -p 443:443 yangzl/webserver:latest`
+`$ docker run -ti --name webserver -v /data:/data -p 80:80 -p 443:443 yangzl/webserver:tls13`
 
 ## PHP 打开 zend 缓存
 
