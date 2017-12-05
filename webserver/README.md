@@ -54,6 +54,17 @@ opcache.enable_cli=1
 
 ## 补充一
 
+对于选择在即电脑上构建镜像的用户，可以修改 Dockerfile 以便于提高软件的编译速度。即将文件中的 `make` 命令后面加上 `-j n` 如:
+
+```
+./configure
+make -j 4
+make install
+```
+其中 `n` 表示计算机 CPU 的核心数量，如果计算机用的是 4 核处理器，n 就改为 4。
+
+## 补充二
+
 > * TLS1.3-draft--18 分支**不支持** Nginx-CT
 > * TLS1.3-draft--19 分支**支持** Nginx-CT，但 Chrome 62.0 **不支持** TLS1.3-draft--19 分支
 
@@ -66,7 +77,7 @@ ssl_ciphers                TLS13-AES-256-GCM-SHA384:TLS13-CHACHA20-POLY1305-SHA2
 
 包含 TLS13 是 TLS 1.3 新增的 Cipher Suite，加在最前面即可；如果你不打算继续支持 IE8，可以去掉包含 3DES 的 Cipher Suite。
 
-## 补充二
+## 补充三
 
 * NGINX 编译选项如下：
 
