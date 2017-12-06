@@ -54,7 +54,7 @@ opcache.enable_cli=1
 
 ## 补充一
 
-对于选择在即电脑上构建镜像的用户，可以修改 Dockerfile 以便于提高软件的编译速度。即将文件中的 `make` 命令后面加上 `-j n` 如:
+* 对于选择在即电脑上构建镜像的用户，可以修改 Dockerfile 以便于提高软件的编译速度。即将文件中的 `make` 命令后面加上 `-j n` 如:
 
 ```
 ./configure
@@ -62,6 +62,14 @@ make -j 4
 make install
 ```
 其中 `n` 表示计算机 CPU 的核心数量，如果计算机用的是 4 核处理器，n 就改为 4。
+
+* 如果需要在自己的计算机（或 VPS）上编译镜像，尤其是在机器内容少于 `1G` 的情况下很容易出现类似下面报错：
+
+```
+make: *** [ext/fileinfo/libmagic/apprentice.lo] Error 1 
+```
+
+这主要是因为编译 PHP 时内存不足所导致的，只要在 PHP 的编译选项中添加 `--disable-fileinfo` 即可解决。
 
 ## 补充二
 
