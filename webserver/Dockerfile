@@ -8,16 +8,16 @@ RUN buildDeps='libpcre3 libpcre3-dev zlib1g-dev libssl-dev libbz2-dev libcurl4-o
         && apt-get update \
         && apt-get install -y $buildDeps \
         && mkdir -p /data/softwares && cd /data/softwares \
-        && wget http://nginx.org/download/nginx-1.12.1.tar.gz && tar -xvf nginx-1.12.1.tar.gz \
-        && wget https://www.openssl.org/source/openssl-1.1.0f.tar.gz && tar -xvf openssl-1.1.0f.tar.gz && mv openssl-1.1.0f openssl \
+        && wget http://nginx.org/download/nginx-1.14.2.tar.gz && tar -xvf nginx-1.14.2.tar.gz \
+        && wget https://www.openssl.org/source/openssl-1.1.1b.tar.gz && tar -xvf openssl-1.1.1b.tar.gz && mv openssl-1.1.1b openssl \
         && wget https://github.com/grahamedgecombe/nginx-ct/archive/master.zip && unzip master.zip && mv nginx-ct-master nginx-ct \
         && rm -rf master.zip \
         && wget https://github.com/yaoweibin/ngx_http_substitutions_filter_module/archive/master.zip \
         && unzip master.zip && mv ngx_http_substitutions_filter_module-master ngx_http_substitutions_filter_module && rm -rf master.zip \
         && wget http://php.net/distributions/php-7.1.7.tar.gz && tar -xvf php-7.1.7.tar.gz \
-        && cd nginx-1.12.1 \
+        && cd nginx-1.14.2 \
         && ./configure --with-stream --with-http_v2_module --with-http_ssl_module --with-http_gzip_static_module \
-                        --with-openssl=../openssl --add-module=../ngx_http_substitutions_filter_module --add-module=../nginx-ct \
+                        --with-openssl=../openssl --with-openssl-opt='enable-tls1_3' --add-module=../ngx_http_substitutions_filter_module --add-module=../nginx-ct \
         && make && make install \
         && ln -s /usr/lib/x86_64-linux-gnu/libssl.so /usr/lib \
         && cd /data/softwares/php-7.1.7 \
