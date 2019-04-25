@@ -1,9 +1,9 @@
 FROM ubuntu:latest
 MAINTAINER Liuyang-Z "liuyang-z@hooowl.com"
 
-RUN buildDeps='libpcre3 libpcre3-dev zlib1g-dev libssl-dev libbz2-dev libcurl4-openssl-dev libjpeg-dev \
-                libfreetype6-dev libpspell-dev librecode-dev libxml2-dev libmcrypt-dev libcurl3-dev \
-                libcurl3 wget unzip build-essential'; \
+RUN buildDeps='build-essential libpcre3 libpcre3-dev zlib1g-dev libssl-dev libbz2-dev \
+            libcurl4-openssl-dev libjpeg-dev libfreetype6-dev libpspell-dev \
+            librecode-dev libxml2-dev libmcrypt-dev libcurl4 wget unzip '; \
     set -x \
         && apt-get update \
         && apt-get install -y $buildDeps \
