@@ -1,0 +1,18 @@
+
+version: '3'
+
+services:
+    webserver:
+        image: test-nginx:latest
+        container_name: webserver
+        restart: always
+        volumes:
+            - /host/path:/data
+        environment:
+            - TZ=Asia/Shanghai
+        ports:
+            - 80:80
+        network_mode: bridge
+
+        stdin_open: true    # -i interactive
+        tty: true           # -t tty
