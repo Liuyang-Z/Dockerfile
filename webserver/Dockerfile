@@ -1,7 +1,16 @@
-FROM ubuntu:latest
+FROM ubuntu:bionic
 LABEL maintainer="liuyang.z@hooowl.com"
 
 ENV DEBIAN_FRONTEND=noninteractive
+
+# update the apt source
+RUN set -x \
+        && apt-get update \
+        && apt-get install -y --reinstall ca-certificates
+
+COPY sources.list /etc/apt/sources.list
+
+# start build the nginx openssl...
 RUN buildDeps='build-essential wget unzip pkg-config bison libzip-dev git libpcre3 libpcre3-dev zlib1g-dev'; \
     set -x \
         && apt-get update \
@@ -12,8 +21,8 @@ RUN buildDeps='build-essential wget unzip pkg-config bison libzip-dev git libpcr
         # 下载 OpenSSL 库
         && wget https://www.openssl.org/source/openssl-1.1.1g.tar.gz && tar -xvf openssl-1.1.1g.tar.gz \
         # 下载 Brotli 库
-        && git clone https://github.com/google/ngx_brotli.git && cd ngx_brotli && git submodule update --init \
-        && cd .. \
+        && git clone https://github.com/google/ngx_brotli.git \
+        && cd ngx_brotli && git submodule update --init && cd .. \
         # 编译 NGINX
         && cd nginx-1.18.0 \
         && ./configure --with-stream \
@@ -29,7 +38,7 @@ RUN buildDeps='build-essential wget unzip pkg-config bison libzip-dev git libpcr
         && chown -R www-data:www-data /usr/local/nginx \
         && mkdir -p /usr/local/nginx/conf/conf.d \
         && rm -rf /data/softwares \
-        && apt-get purge -y --auto-remove build-essential wget unzip libzip-dev
+        && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false build-essential wget unzip libzip-dev
 
 COPY nginx.conf /usr/local/nginx/conf/nginx.conf
 COPY nginx.default.conf /usr/local/nginx/conf/conf.d/default.conf

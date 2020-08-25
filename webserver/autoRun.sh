@@ -7,6 +7,7 @@ mkdir -p /data/html/
 
 if ! [ -f /data/nginx/nginx.conf ]; then
     cp /usr/local/nginx/conf/nginx.conf /data/nginx/nginx.conf
+    cp /usr/local/nginx/html/index.html /data/html/index.html
 else
     cp -f /data/nginx/nginx.conf /usr/local/nginx/conf/nginx.conf
 fi
