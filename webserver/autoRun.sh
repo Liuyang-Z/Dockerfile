@@ -16,7 +16,4 @@ if ! [ -f /data/nginx/conf.d/default.conf ]; then
 fi
 
 /usr/local/nginx/sbin/nginx
-
 /bin/bash
-
-exit 0
