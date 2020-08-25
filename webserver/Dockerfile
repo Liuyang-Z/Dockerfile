@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM debian:buster-slim
 LABEL maintainer="liuyang.z@hooowl.com"
 
 ENV DEBIAN_FRONTEND=noninteractive

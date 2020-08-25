@@ -3,11 +3,11 @@ version: '3'
 
 services:
     webserver:
-        image: test-nginx:latest
+        image: yangzl/webserver:latest
         container_name: webserver
         restart: always
         volumes:
-            - /host/path:/data
+            - /Users/zhaoliuyang/Desktop/conf:/data
         environment:
             - TZ=Asia/Shanghai
         ports:
