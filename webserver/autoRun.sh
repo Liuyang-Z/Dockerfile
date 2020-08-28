@@ -3,6 +3,7 @@
 mkdir -p /data/nginx/conf.d/
 mkdir -p /data/nginx/ssl/
 mkdir -p /data/html/
+mkdir -p /data/logs/
 
 
 if ! [ -f /data/nginx/nginx.conf ]; then
